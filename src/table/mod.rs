@@ -1,5 +1,3 @@
-use std::ops::Add;
-
 /// Returns a `String` containing the LaTeX code for the specified table
 ///
 /// `output_vals` must have exactly `2^input_cols` rows, otherwise this will return an error
@@ -29,18 +27,16 @@ pub fn generate_table(
                     .map(|c| c.to_string())
                     .collect::<Vec<String>>()
                     .join(" & ")
-                    .add(" & ")
-                    .add(
-                        output_vals.get(n as usize)
-                            .unwrap()
-                            .iter()
-                            .map(|n| n.to_string())
-                            .collect::<Vec<String>>()
-                            .join(" & ")
-                            .as_str()
-                    )
+                    + " & "
+                    + output_vals.get(n as usize)
+                        .unwrap()
+                        .iter()
+                        .map(|n| n.to_string())
+                        .collect::<Vec<String>>()
+                        .join(" & ")
+                        .as_str()
             )
-            .map(|v| String::from("        ").add(v.as_str()))
+            .map(|v| String::from("        ") + v.as_str())
             .collect::<Vec<String>>()
             .join(" \\\\ \n")
             .as_str()
