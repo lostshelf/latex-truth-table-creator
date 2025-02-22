@@ -1,0 +1,26 @@
+{
+    "name": "LaTeX Truth Table Creator",
+    "image": "mcr.microsoft.com/devcontainers/rust",
+    "features": {
+        "ghcr.io/devcontainers/features/rust:1": {
+        }
+    },
+    "customizations": {
+        "jetbrains": {
+            "backend": "RustRover",
+            "plugins": [
+                // Add plugins here
+            ]
+        },
+        "vscode": {
+            "settings": {},
+            "extensions": [
+                // Add extensions here
+            ]
+        }
+    },
+    "mounts": [
+        "type=bind,source=${localWorkspaceFolder},target=/work",
+        "type=bind,source=/home/${localEnv:USER}/.ssh,target=/root/.ssh,readonly"
+    ],
+}
